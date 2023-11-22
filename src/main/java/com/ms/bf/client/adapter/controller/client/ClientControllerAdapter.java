@@ -16,14 +16,14 @@ import java.util.concurrent.ExecutionException;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/card/")
-public class CardControllerAdapter {
+public class ClientControllerAdapter {
 
     private static final String CREATE_CLIENT= "/create";
     private final CreateIn createCardIn;
     private final Processor processor;
 
 
-    public CardControllerAdapter( CreateIn createCardIn1) {
+    public ClientControllerAdapter(CreateIn createCardIn1) {
         this.createCardIn = createCardIn1;
         this.processor = new RequestProcessor();
     }
@@ -32,7 +32,7 @@ public class CardControllerAdapter {
     @PostMapping(CREATE_CLIENT)
     public RestResponse<Integer> createClient(final HttpServletRequest httpServletRequest, @Valid @RequestBody ClientRest request )throws ExecutionException, InterruptedException{
         log.info("Llamada al servicio de creacion de cliente");
-        var response =  createCardIn.create(request.toCardDomain());
+        var response =  createCardIn.create(request.toClientDomain());
         log.info("respuesta del servicio de creacion de clientes : [{}] " , response);
         return processor.processRequest(Processor.Enriched.of(httpServletRequest),
                 res -> RestResponse.<Integer>builder()

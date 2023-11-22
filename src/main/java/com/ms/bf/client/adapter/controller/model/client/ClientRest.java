@@ -60,7 +60,7 @@ public class ClientRest {
     }
 
 
-    public Client toCardDomain() {
+    public Client toClientDomain() {
         if (!ClientValidator.isValidAccountNumber(this.accountNumber)) {
             throw new CardException(ErrorCode.INVALID_ACCOUNT_NUMBER);
         }
