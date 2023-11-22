@@ -29,12 +29,12 @@ public class KafkaProducerAdapter implements KafkaProducerPort {
     }
 
     @Override
-    public Integer sendMessage(Client card) throws GenericException {
+    public Integer sendMessage(Client client) throws GenericException {
         try {
-            log.info("Message sent -> {}", card.toString());
+            log.info("Message sent -> {}", client.toString());
 
 
-            String json = objectMapper.writeValueAsString(card);
+            String json = objectMapper.writeValueAsString(client);
 
 
             Message<String> message = MessageBuilder.withPayload(json)
@@ -42,7 +42,7 @@ public class KafkaProducerAdapter implements KafkaProducerPort {
                     .build();
 
             kafkaTemplate.send(message);
-            log.info("Sent message value: {}", card);
+            log.info("Sent message value: {}", client);
             return 0;
         } catch (MessagingException e) {
             log.error("Error al generar el mensaje: ", e);
