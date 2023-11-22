@@ -1,0 +1,1 @@
+INSERT INTO pokemon(name, ability) VALUES (:name, :ability)

@@ -1,0 +1,7 @@
+# eliminar el volumen si no se muestran los cambios nuevos sudo rm -rf postgres/postgres-data
+version: '3.7'
+services:
+  postgres:
+    extends:
+      file: ./postgres/docker-compose.yml
+      service: postgres_db

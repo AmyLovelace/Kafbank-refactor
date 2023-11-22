@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <springProperty scope="context" name="environment" source="spring.profiles.active"/>
+
+    <include
+            resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <property name="log.path" value="log" />
+    <property name="log.filename.prefix" value="log-${spring.applicario}" />
+    <appender name="CONSOLE"
+              class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %highlight([${environment}]) %highlight([${springAppName:-}]):  %highlight(%d{yyyy-MM-dd HH:mm:ss.SSS}) || [%thread] || %highlight([%level]) || %logger{36} || %msg%n\n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE-ROLLING"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/${log.filename.prefix}.log</file>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/archive/year_%d{yyyy, aux}/month_%d{MM,
+                aux}/${log.filename.prefix}.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <totalSizeCap>10GB</totalSizeCap>
+            <maxHistory>3653</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d || [%t] || %p || %c{1.} || %m%n</pattern>
+        </encoder>
+    </appender>
+
+    <springProfile name="local | dev">
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE-ROLLING" />
+        </root>
+    </springProfile>
+
+    <springProfile name="prod">
+        <root level="WARN">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE-ROLLING" />
+        </root>
+    </springProfile>
+
+    <springProfile name="!local &amp; !dev &amp; !prod">
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE-ROLLING" />
+        </root>
+    </springProfile>
+</configuration>

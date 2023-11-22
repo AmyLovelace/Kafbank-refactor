@@ -1,0 +1,87 @@
+{
+	"info": {
+		"_postman_id": "14fe3747-8818-46fa-8db7-a2d250929178",
+		"name": "ppj-hexagonal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "598612"
+	},
+	"item": [
+		{
+			"name": "pokemon internal",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api/v1/pokemon/internal/amazonas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"internal",
+						"amazonas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pokemon external",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8088/api/v1/pokemon/bulbasaur",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"bulbasaur"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create pokemon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"cantaclaro\",\n    \"ability\": {\n        \"name\": \"overgrow\",\n        \"description\": \"When this Pokémon has 1/3 or less of its HP remaining, its grass-type moves inflict 1.5× as much regular damage.\",\n        \"damage\": null\n    },\n    \"type\": {\n        \"name\": \"grass\",\n        \"move_damage_class\": \"special\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8088/api/v1/pokemon/internal/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"api",
+						"v1",
+						"pokemon",
+						"internal",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
