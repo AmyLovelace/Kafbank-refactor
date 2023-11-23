@@ -43,7 +43,8 @@ public class ClientRest {
     int age;
 
     @JsonCreator
-    public ClientRest(@JsonProperty("accountNumber") String accountNumber, @JsonProperty("age")int age ) {
+    public ClientRest(@JsonProperty("name") String name,@JsonProperty("accountNumber") String accountNumber, @JsonProperty("age")int age ) {
+        this.name = name;
         this.accountNumber = accountNumber;
         this.age= age;
     }
@@ -54,6 +55,7 @@ public class ClientRest {
         }
 
         return ClientRest.builder()
+                .name(client.getName())
                 .accountNumber(client.getAccountNumber())
                 .age(client.getAge())
                 .build();
