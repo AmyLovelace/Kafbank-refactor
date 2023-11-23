@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/card/")
+@RequestMapping("/api/v1/client/")
 public class ClientControllerAdapter {
 
     private static final String CREATE_CLIENT= "/create";

@@ -32,7 +32,7 @@ public class KafkaProducerCardAdapter implements KafkaProducerCardPort{
 
 
     @Override
-    public UUID sendCardRequest(Card card)throws GenericException {
+    public Integer sendCardRequest(Card card)throws GenericException {
         try {
             log.info("Message sent -> {}", card.toString());
 
@@ -46,7 +46,7 @@ public class KafkaProducerCardAdapter implements KafkaProducerCardPort{
 
             kafkaTemplate.send(message);
             log.info("Sent message value: {}", card);
-            return UUID.randomUUID();
+            return 0;
         } catch (MessagingException e) {
             log.error("Error al generar el mensaje: ", e);
             throw new GenericException(ErrorCode.CLIENT_INVALID_REQUEST, "Error al generar el mensaje");
