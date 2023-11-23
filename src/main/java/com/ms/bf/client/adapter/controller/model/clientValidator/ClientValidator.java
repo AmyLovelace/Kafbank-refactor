@@ -45,7 +45,7 @@ public class ClientValidator {
             return false;
         }
 
-        if (!membership.matches("^(Standard|Premium|standard|premium|PREMIUM|STANDARD)$")) {
+        if (!membership.matches("^(Debit|Credit|debit|credit|DEBIT|CREDIT)$")) {
             return false;
         }
 
