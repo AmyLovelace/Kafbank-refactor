@@ -6,5 +6,5 @@ import java.util.UUID;
 
 public interface KafkaProducerCardPort {
 
-    Integer sendCardRequest(Card card);
+    UUID sendCardRequest(Card card);
 }

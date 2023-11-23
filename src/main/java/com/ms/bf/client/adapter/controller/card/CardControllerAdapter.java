@@ -31,12 +31,12 @@ public class CardControllerAdapter {
 
     @CrossOrigin
     @PostMapping(CREATE_CARD)
-    public RestResponse<Integer> createCard(final HttpServletRequest httpServletRequest, @Valid @RequestBody CardRest request )throws ExecutionException, InterruptedException{
+    public RestResponse<UUID> createCard(final HttpServletRequest httpServletRequest, @Valid @RequestBody CardRest request )throws ExecutionException, InterruptedException{
         log.info("Llamada al servicio de creacion de tarjeta");
         var response =  cardIn.create(request.toCardDomain());
         log.info("respuesta del servicio de creacion tarjeta : [{}] " , response);
         return processor.processRequest(Processor.Enriched.of(httpServletRequest),
-                res -> RestResponse.<Integer>builder()
+                res -> RestResponse.<UUID>builder()
                         .data(response)
                         .id(res.getId())
                         .status(HttpStatus.OK.value())
