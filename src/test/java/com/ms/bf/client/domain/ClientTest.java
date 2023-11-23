@@ -10,6 +10,7 @@ public class ClientTest {
     @Test
     public void shouldCreateAccountWithValidData() {
         Client client = Client.builder()
+                .name("amy")
                 .accountNumber("18.333.888-0")
                 .age(38)
                 .build();

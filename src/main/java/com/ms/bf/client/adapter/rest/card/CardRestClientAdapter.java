@@ -47,7 +47,7 @@ public class CardRestClientAdapter implements CardRepository {
     @Override
     public Card create(Card card) {
         log.info("Servicio crear tarjeta, lo conecta a: [{}]" ,property.getTopicCard());
-        CardModel response = Optional.ofNullable(restTemplate.postForObject(property.getTopicName(), card, CardModel.class))
+        CardModel response = Optional.ofNullable(restTemplate.postForObject(property.getTopicCard(), card, CardModel.class))
                 .orElseThrow(()-> new EmptyOrNullBodyRestClientException(ErrorCode.CLIENT_INVALID_REQUEST));
         log.info("respuesta del metodo create de Card [{}]", response);
         return response.toCardDomain();
