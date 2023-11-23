@@ -24,7 +24,7 @@ public class CreateCardInUseCase implements CardIn {
             return kafkaProducerPort.sendCardRequest(card);
         } catch (RuntimeException e) {
             log.error("Error al generar el mensaje: ", e);
-            throw new GenericException(ErrorCode.CLIENT_INVALID_REQUEST);
+            throw new GenericException(ErrorCode.CARD_INVALID_REQUEST);
         }
     }
 }

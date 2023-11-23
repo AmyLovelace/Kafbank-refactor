@@ -13,6 +13,7 @@ public enum ErrorCode {
     CLIENT_INVALID_REQUEST(102, Series.CLIENT_ERROR, "datos invalidos o con formato no aplicable "),
     CARD_BAD_REQUEST(103, Series.CLIENT_ERROR, "La tarjeta no existe o peticion invalida"),
     ACCOUNT_NOT_FOUND(104, Series.CLIENT_ERROR,"No se encontro numero de cuenta de usuario"),
+    CARD_INVALID_REQUEST(103, Series.CLIENT_ERROR, "La tarjeta no existe"),
     CARD_TIMEOUT(105, Series.SERVER_ERROR,"El llamado a tarjeta devolvio error"),
     INVALID_ACCOUNT_NUMBER(103, Series.CLIENT_ERROR,"error en formato de numero de cuenta"),
     INVALID_ACCOUNT_AGE(102,Series.CLIENT_ERROR,"error en formato de numero de cuenta");
