@@ -22,13 +22,24 @@ public class KafkaConfig {
     }
 
     @Bean
-    public NewTopic cardTopic(){
+    public NewTopic accountTopic(){
         Map<String,String> configurations = new HashMap<>();
         configurations.put(TopicConfig.CLEANUP_POLICY_CONFIG, TopicConfig.CLEANUP_POLICY_DELETE);
         configurations.put(TopicConfig.RETENTION_MS_CONFIG, kafkaProperty.getRetentionMsConfig());
 
         return TopicBuilder.name(kafkaProperty.getTopicName())
 
+                .configs(configurations)
+                .build();
+    }
+
+    @Bean
+    public NewTopic cardTopic(){
+        Map<String, String> configurations = new HashMap<>();
+        configurations.put(TopicConfig.CLEANUP_POLICY_CONFIG, TopicConfig.CLEANUP_POLICY_DELETE);
+        configurations.put(TopicConfig.RETENTION_MS_CONFIG, kafkaProperty.getRetentionMsConfig());
+
+        return TopicBuilder.name(kafkaProperty.getTopicCard())
                 .configs(configurations)
                 .build();
     }

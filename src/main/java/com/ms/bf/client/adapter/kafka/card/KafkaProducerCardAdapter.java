@@ -20,11 +20,11 @@ import java.util.UUID;
 @Slf4j
 public class KafkaProducerCardAdapter implements KafkaProducerCardPort{
 
-    private final KafkaTemplate<String, Card> kafkaTemplate;
+    private final KafkaTemplate<String, String> kafkaTemplate;
     private final KafkaProperty kafkaProperty;
     private final ObjectMapper objectMapper;
 
-    public KafkaProducerCardAdapter(KafkaTemplate<String, Card> kafkaTemplate, KafkaProperty kafkaProperty, ObjectMapper objectMapper) {
+    public KafkaProducerCardAdapter(KafkaTemplate<String, String> kafkaTemplate, KafkaProperty kafkaProperty, ObjectMapper objectMapper) {
         this.kafkaTemplate = kafkaTemplate;
         this.kafkaProperty = kafkaProperty;
         this.objectMapper = objectMapper;
