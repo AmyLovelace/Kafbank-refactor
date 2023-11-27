@@ -52,4 +52,6 @@ public class KafkaProducerAdapter implements KafkaProducerPort {
             throw new GenericException(ErrorCode.CLIENT_INVALID_REQUEST, "Error al serializar a JSON");
         }
     }
+
+
 }
